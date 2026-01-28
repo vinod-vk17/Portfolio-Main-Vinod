@@ -1,14 +1,11 @@
 {
   "version": 2,
-  "buildCommand": "cd client && npm install && npm run build",
-  "outputDirectory": "client/dist",
-  "framework": null,
+  "framework": "vite",
+  "buildCommand": "npm install && npx vite build",
+  "outputDirectory": "dist/public",
+  "installCommand": "npm install",
+  "devCommand": "npx vite",
   "rewrites": [
-    { "source": "/api/profile", "destination": "/api/profile" },
-    { "source": "/api/experiences", "destination": "/api/experiences" },
-    { "source": "/api/education", "destination": "/api/education" },
-    { "source": "/api/projects", "destination": "/api/projects" },
-    { "source": "/api/skills", "destination": "/api/skills" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
