@@ -1,17 +1,5 @@
-import { drizzle } from "drizzle-orm/node-postgres";
-import pg from "pg";
-import * as schema from "../shared/schema";
+import { sql } from '@vercel/postgres';
+import { drizzle } from 'drizzle-orm/vercel-postgres';
+import * as schema from '../shared/schema';
 
-const { Pool } = pg;
-
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL environment variable is required");
-}
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
-  max: 1,
-});
-
-export const db = drizzle(pool, { schema });
+export const db = drizzle(sql, { schema });
